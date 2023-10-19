@@ -58,7 +58,7 @@ summary(l)
 plot(l)
 
 #3.9
-catfish
+catfish = table3_6_catfish
 attach(catfish)
 plot(Y~X)
 cor(X,Y)
@@ -66,3 +66,41 @@ l = lm(Y~X)
 abline(l)
 summary(l)
 confint(l,level=0.95)
+residuals(l)
+sum(residuals(l)^2)
+dwtest(l)
+qqnorm(residuals(l))
+l$coefficients[1] + 5.5*l$coefficients[2]
+
+#3.10
+attach(textile)
+plot(y~x)
+l=lm(y~x)
+summary(l)
+predict(l)
+residuals(l)
+plot(x,residuals(l))
+dwtest(l)
+qqnorm(residuals(l))
+predict(l,newdata=data.frame(x=400))
+
+#3.12
+cars
+attach(cars)
+summary(lm(dist~speed))
+summary(lm(dist~poly(speed,2)))
+summary(lm(dist~0+speed))
+
+#3.13
+attach(weight)
+plot(y~x)
+lm(y~x)
+lm(y~poly(x,2))
+lm(y~poly(x,3))
+
+#3.16
+plot(dist~speed)
+l=lm(dist~(speed<=15)*speed+(speed>15)*speed)
+summary(l)
+io<-order(speed)
+lines(speed[io],fitted(l,list(speed))[io])
