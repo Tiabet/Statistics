@@ -37,3 +37,36 @@ l.fighter=lm(SPR~LFFD+RGF+PLF+SLF)
 summary(l.fighter)
 plot(SPR,resid(l.fighter))
 qqplot(SPR,resid(l.fighter))
+
+#4.4
+attach(drill)
+plot(S,Y)
+plot(F,Y)
+plot(D,Y)
+l.drill=lm(Y~S+F+D)
+summary(l.drill)
+l.drill2=lm(Y~S+F+D+S*F+S*D+F*D+S*S+F*F+D*D)
+summary(l.drill2)
+
+#4.5
+attach(psychology)
+plot(x1,y)
+plot(x2,y)
+l.psy=lm(y~x1+x2)
+summary(l.psy)
+l.psy2 = lm(y~x1)
+l.psy3 = lm(y~x2)
+summary(l.psy2)
+summary(l.psy3)
+
+#4.6
+data(stackloss)
+attach(stackloss)
+plot(stack.loss~Air.Flow)
+plot(stack.loss~Water.Temp)
+plot(stack.loss~Acid.Conc.)
+
+l = lm(stack.loss~Air.Flow+Water.Temp+Acid.Conc.)
+summary(l)
+plot(l)
+
